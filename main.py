@@ -117,6 +117,44 @@ class Sudoku:
 
 class Solver:
 
-    def __init__(self):
-        pass
+    def __init__(self, to_solve):
+        self.to_solve = to_solve
+        self.solution = None
+
+    def valid_digits(self, sud, pos):
+        i = pos // 9
+        j = pos % 9
+
+        row = set(sud.filter_empties(sud.row(i)))
+        col = set(sud.filter_empties(sud.column(j)))
+        blo = set(sud.filter_empties(sud.block(i, j)))
+        digits = set([str(d) for d in range(1, 10)])
+
+        return (digits - row) & (digits - col) & (digits - blo)
+
+    def solve(self):
+        stack = []
+        stack.append(self.to_solve)
+        solving = True
+        while solving:
+            current = stack.pop()
+            curr_sudoku = Sudoku(current)
+
+            # find first empty position
+            pos = current.find("0")
+
+            if pos == -1:
+                if curr_sudoku.is_valid():
+                    return current
+                else:
+                    return False
+
+            # find all possible digits for that position
+            digits = self.valid_digits(curr_sudoku, pos)
+
+            # add each digit to a new sudoku string and append string to stack
+            for d in digits:
+                new = current[:pos] + str(d) + current[pos+1:]
+                stack.append(new)
+
 
