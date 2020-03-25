@@ -52,6 +52,18 @@ class Sudoku:
         """
         return self.s_string[j::9]
 
+    def block(self, i, j):
+        """
+        Returns the 3x3 block that the position (i, j) belongs to.
+        :param i: int; row index (0-8)
+        :param j: int; column index (0-8)
+        :return: str; block
+        """
+        block = ""
+        for r in range(3*(i//3), 3*((i//3)+1)):
+            block += self.row(r)[3*(j//3):3*((j//3)+1)]
+        return block
+
     def __repr__(self):
         pass
 
