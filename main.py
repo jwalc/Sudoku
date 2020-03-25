@@ -64,6 +64,15 @@ class Sudoku:
             block += self.row(r)[3*(j//3):3*((j//3)+1)]
         return block
 
+    @staticmethod
+    def filter_empties(s):
+        """
+        Returns a string of digits without 0s
+        :param s: str; string containing digits
+        :return: str; a string without 0s
+        """
+        return "".join([d for d in s if d != "0"])
+
     def __repr__(self):
         pass
 
