@@ -95,7 +95,24 @@ class Sudoku:
         return "".join([d for d in s if d != "0"])
 
     def __repr__(self):
-        pass
+        """
+        Returns a string for the print() build-in function.
+        Tries to resemble a Sudoku as seen in printed form.
+        :return: str
+        """
+        result = ""
+        for i in range(9):
+            for j in range(9):
+                if j in [3, 6]:
+                    result += "|"
+                if self.s_string[i*9 + j] == "0":
+                    result += "-"
+                else:
+                    result += self.s_string[i*9 + j]
+            result += "\n"
+            if i in [2, 5]:
+                result += "="*11 + "\n"
+        return result
 
 
 class Solver:
