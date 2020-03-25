@@ -44,6 +44,14 @@ class Sudoku:
         """
         return self.s_string[9*i:9*(i+1)]
 
+    def column(self, j):
+        """
+        Returns the (j+1)-th column of the sudoku as a string
+        :param j: int; column index (0-8)
+        :return: str; the (j+1)-th column of the sudoku
+        """
+        return self.s_string[j::9]
+
     def __repr__(self):
         pass
 
