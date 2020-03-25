@@ -21,7 +21,7 @@ class Sudoku:
         Checks if the Sudoku is valid, meaning there is no filled position defying the standard Sudoku-rules
         :return: boolean
         """
-        pass
+        return self.check_rows() and self.check_columns() and self.check_blocks()
 
     def check_rows(self):
         """
