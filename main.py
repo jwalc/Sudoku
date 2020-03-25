@@ -124,10 +124,10 @@ class Solver:
     @staticmethod
     def valid_digits(s_string, pos):
         """
-
-        :param s_string:
-        :param pos:
-        :return:
+        Takes in a sudoku string and a position to fill and returns a set of valid digits
+        :param s_string: str; a sudoku string
+        :param pos: int; index to fill
+        :return: set; valid digits
         """
         sud = Sudoku(s_string)
 
@@ -142,6 +142,11 @@ class Solver:
         return (digits - row) & (digits - col) & (digits - blo)
 
     def solve(self):
+        """
+        Solves a uniquely solvable sudoku, given as a string
+        :return: str; solved sudoku
+                False if not solvable
+        """
         stack = []
         stack.append(self.to_solve)
         solving = True
