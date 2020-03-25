@@ -120,4 +120,14 @@ class Solver:
     def __init__(self, to_solve):
         self.to_solve = to_solve
         self.solution = None
-    
+
+    def valid_digits(self, sud, pos):
+        i = pos // 9
+        j = pos % 9
+
+        row = set(sud.filter_empties(sud.row(i)))
+        col = set(sud.filter_empties(sud.column(j)))
+        blo = set(sud.filter_empties(sud.block(i, j)))
+        digits = set([str(d) for d in range(1, 10)])
+
+        return (digits - row) & (digits - col) & (digits - blo)
