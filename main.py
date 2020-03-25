@@ -28,10 +28,22 @@ class Sudoku:
         Checks if all rows of the Sudoku are valid.
         :return: boolean
         """
-        pass
+        for i in range(9):
+            row = self.filter_empties(self.row(i))
+            if len(row) != len(set([d for d in row])):
+                return False
+        return True
 
     def check_columns(self):
-        pass
+        """
+        Checks if all columns of the Sudoku are valid.
+        :return: boolean
+        """
+        for j in range(9):
+            column = self.filter_empties(self.column(j))
+            if len(column) != len(set([d for d in column])):
+                return False
+        return True
 
     def check_blocks(self):
         pass
