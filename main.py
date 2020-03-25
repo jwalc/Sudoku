@@ -122,7 +122,15 @@ class Solver:
         self.solution = self.solve()
 
     @staticmethod
-    def valid_digits(sud, pos):
+    def valid_digits(s_string, pos):
+        """
+
+        :param s_string:
+        :param pos:
+        :return:
+        """
+        sud = Sudoku(s_string)
+
         i = pos // 9
         j = pos % 9
 
@@ -139,23 +147,22 @@ class Solver:
         solving = True
         while solving:
             current = stack.pop()
-            curr_sudoku = Sudoku(current)
 
             # find first empty position
             pos = current.find("0")
 
             if pos == -1:
+                curr_sudoku = Sudoku(current)
                 if curr_sudoku.is_valid():
                     return current
                 else:
                     return False
 
             # find all possible digits for that position
-            digits = self.valid_digits(curr_sudoku, pos)
+            digits = self.valid_digits(current, pos)
 
             # add each digit to a new sudoku string and append string to stack
             for d in digits:
                 new = current[:pos] + str(d) + current[pos+1:]
                 stack.append(new)
-
 
