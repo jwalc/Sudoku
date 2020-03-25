@@ -36,6 +36,14 @@ class Sudoku:
     def check_blocks(self):
         pass
 
+    def row(self, i):
+        """
+        Returns the (i+1)-th row of the sudoku
+        :param i: int; row index (0-8)
+        :return: str; the i+1-th row of the sudoku
+        """
+        return self.s_string[9*i:9*(i+1)]
+
     def __repr__(self):
         pass
 
