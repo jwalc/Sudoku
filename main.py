@@ -117,6 +117,7 @@ class Sudoku:
 
 class Solver:
 
-    def __init__(self):
-        pass
-
+    def __init__(self, to_solve):
+        self.to_solve = to_solve
+        self.solution = None
+    
