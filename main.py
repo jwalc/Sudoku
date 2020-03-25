@@ -119,9 +119,10 @@ class Solver:
 
     def __init__(self, to_solve):
         self.to_solve = to_solve
-        self.solution = None
+        self.solution = self.solve()
 
-    def valid_digits(self, sud, pos):
+    @staticmethod
+    def valid_digits(sud, pos):
         i = pos // 9
         j = pos % 9
 
