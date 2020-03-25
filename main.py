@@ -16,6 +16,26 @@ class Sudoku:
         """
         return "0" not in self.s_string
 
+    def is_valid(self):
+        """
+        Checks if the Sudoku is valid, meaning there is no filled position defying the standard Sudoku-rules
+        :return: boolean
+        """
+        pass
+
+    def check_rows(self):
+        """
+        Checks if all rows of the Sudoku are valid.
+        :return: boolean
+        """
+        pass
+
+    def check_columns(self):
+        pass
+
+    def check_blocks(self):
+        pass
+
     def __repr__(self):
         pass
 
