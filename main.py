@@ -46,7 +46,16 @@ class Sudoku:
         return True
 
     def check_blocks(self):
-        pass
+        """
+        Checks if all columns of the Sudoku are valid.
+        :return: boolean
+        """
+        for i in range(3):
+            for j in range(3):
+                block = self.filter_empties(self.block(i*3, j*3))
+                if len(block) != len(set([d for d in block])):
+                    return False
+        return True
 
     def row(self, i):
         """
